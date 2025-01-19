@@ -1,4 +1,4 @@
-package com.rpsouza.planner.presenter.auth.signup
+package com.rpsouza.planner.presenter.signup
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

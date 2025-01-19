@@ -7,7 +7,7 @@
     android:padding="@dimen/md_16dp"
     android:fillViewport="true"
     android:clipToPadding="false"
-    tools:context=".presenter.app.home.HomeFragment">
+    tools:context=".presenter.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

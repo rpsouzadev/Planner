@@ -1,4 +1,4 @@
-package com.rpsouza.planner.presenter.app.home
+package com.rpsouza.planner.presenter.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
