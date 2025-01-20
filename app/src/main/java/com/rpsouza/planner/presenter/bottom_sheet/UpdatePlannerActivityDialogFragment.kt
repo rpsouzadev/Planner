@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rpsouza.planner.databinding.FragmentUpadatePlannerActivityDialogBinding
 
 
-class UpadatePlannerActivityDialogFragment : BottomSheetDialogFragment() {
+class UpdatePlannerActivityDialogFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentUpadatePlannerActivityDialogBinding? = null
     private val binding get() = _binding!!
 
@@ -27,6 +26,10 @@ class UpadatePlannerActivityDialogFragment : BottomSheetDialogFragment() {
         with(binding) {
             // TODO: Add signup logic here
         }
+    }
+
+    companion object {
+        const val TAG = "UpdatePlannerActivityDialogFragment"
     }
 
     override fun onDestroyView() {

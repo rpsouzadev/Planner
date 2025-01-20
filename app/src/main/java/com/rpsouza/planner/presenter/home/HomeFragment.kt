@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.rpsouza.planner.databinding.FragmentHomeBinding
+import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -23,7 +24,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            // TODO: Add signup logic here
+            btnSaveNewPlannerActivity.setOnClickListener {
+                UpdatePlannerActivityDialogFragment().show(
+                    childFragmentManager,
+                    UpdatePlannerActivityDialogFragment.TAG
+                )
+            }
         }
     }
 

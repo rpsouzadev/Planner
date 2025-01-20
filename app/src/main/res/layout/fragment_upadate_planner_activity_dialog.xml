@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/zinc_800"
     android:padding="@dimen/md_16dp"
-    tools:context=".presenter.bottom_sheet.UpadatePlannerActivityDialogFragment">
+    tools:context=".presenter.bottom_sheet.UpdatePlannerActivityDialogFragment">
 
     <TextView
         android:id="@+id/tvSignupTitle"
@@ -81,16 +81,18 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/zinc_500"
             android:background="@android:color/transparent"
-            android:text="@string/botao_de_exclusao_de_atividade" />
+            android:text="@string/botao_de_exclusao_de_atividade"
+            android:textColor="@color/zinc_500" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnUpdatePlannerActivity"
+        style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/xm_32dp"
+        android:backgroundTint="@color/lime_300"
         android:text="@string/salvar_usuario"
         android:textColor="@color/lime_950"
         app:layout_constraintEnd_toEndOf="parent"
