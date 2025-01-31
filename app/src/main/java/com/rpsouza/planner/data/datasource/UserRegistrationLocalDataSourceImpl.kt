@@ -9,7 +9,7 @@ private const val IS_USER_REGISTERED = "IS_USER_REGISTERED"
 class UserRegistrationLocalDataSourceImpl(
     private val applicationContext: Context
 ) : UserRegistrationLocalDataSource {
-    val userRegistrationSharedPreferences: SharedPreferences =
+    private val userRegistrationSharedPreferences: SharedPreferences =
         applicationContext.getSharedPreferences(USER_REGISTRATION_FILE_NAME, Context.MODE_PRIVATE)
 
     override fun getIsUserRegistered(): Boolean {
