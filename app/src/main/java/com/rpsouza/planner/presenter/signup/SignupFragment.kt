@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.rpsouza.planner.R
 import com.rpsouza.planner.databinding.FragmentSignupBinding
@@ -14,6 +15,7 @@ class SignupFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val navController by lazy { findNavController() }
+    private val signupViewModel: SignupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +30,7 @@ class SignupFragment : Fragment() {
 
         with(binding) {
             btnSaveUser.setOnClickListener {
+                signupViewModel.saveIsUserRegistered(isUserRegistered = true)
                 navController.navigate(R.id.action_signupFragment_to_homeFragment)
             }
         }
