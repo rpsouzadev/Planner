@@ -8,6 +8,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,7 @@ class SignupFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val navController by lazy { findNavController() }
-    private val signupViewModel: SignupViewModel by viewModels()
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +58,11 @@ class SignupFragment : Fragment() {
             }
 
             btnSaveUser.setOnClickListener {
-                signupViewModel.saveProfile()
-                navController.navigate(R.id.action_signupFragment_to_homeFragment)
+                signupViewModel.saveProfile(
+                    onCompleted = {
+                        navController.navigate(R.id.action_signupFragment_to_homeFragment)
+                    }
+                )
             }
         }
     }
