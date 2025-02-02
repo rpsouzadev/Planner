@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/md_16dp"
-    android:clipToPadding="false"
     android:fillViewport="true"
+    android:padding="@dimen/md_16dp"
     tools:context=".presenter.signup.SignupFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,9 +15,9 @@
         <TextView
             android:id="@+id/tvSignupTitle"
             style="@style/Title"
-            android:layout_marginTop="@dimen/md_16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md_16dp"
             android:text="@string/cadastro_de_usuario"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +27,9 @@
             android:id="@+id/llNewPlannerActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/xl_64dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginVertical="@dimen/xl_64dp"
             app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/botao_adicionar_foto_de_usuario"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/img_add_button" />
 
             </androidx.cardview.widget.CardView>
@@ -100,6 +100,7 @@
             android:id="@+id/btnSaveUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="@string/salvar_usuario"
             android:textColor="@color/lime_950"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +109,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>
