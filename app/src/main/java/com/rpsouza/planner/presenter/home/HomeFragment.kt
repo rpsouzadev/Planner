@@ -1,19 +1,20 @@
 package com.rpsouza.planner.presenter.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.rpsouza.planner.R
-import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.databinding.FragmentHomeBinding
+import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
+import com.rpsouza.planner.presenter.component.PlannerActivityDataPickerDialogFragment
 import com.rpsouza.planner.presenter.signup.SignupViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -37,6 +38,18 @@ class HomeFragment : Fragment() {
 
         setupObserves()
         with(binding) {
+            tietNewPlannerActivityDate.setOnClickListener {
+                PlannerActivityDataPickerDialogFragment(
+                    onConfirm = { year, month, day ->
+                        Toast.makeText(requireContext(), "$year $month, $day", Toast.LENGTH_SHORT).show()
+                    },
+                    onCancel = {}
+                ).show(
+                    childFragmentManager,
+                    PlannerActivityDataPickerDialogFragment.TAG
+                )
+            }
+
             btnSaveNewPlannerActivity.setOnClickListener {
                 UpdatePlannerActivityDialogFragment().show(
                     childFragmentManager,

@@ -21,4 +21,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="seu_token_expirou">Oops... O token expirou!</string>
     <string name="obter_novo_token">OBTER NOVO TOKEN</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cancel">Cancelar</string>
 </resources>

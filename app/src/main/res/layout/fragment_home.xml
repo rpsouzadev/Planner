@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/md_16dp"
-    android:fillViewport="true"
     android:clipToPadding="false"
+    android:fillViewport="true"
+    android:padding="@dimen/md_16dp"
     tools:context=".presenter.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,8 +39,8 @@
                 android:id="@+id/ivUserPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:contentDescription="@string/imagem_foto_do_usuario"
+                android:scaleType="centerCrop"
                 tools:src="@drawable/img_this_person_does_not_exist" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -60,8 +60,8 @@
             android:id="@+id/llNewPlannerActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/xm_32dp"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +95,8 @@
                     android:id="@+id/tietNewPlannerActivityDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:hint="@string/escolha_a_data" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -109,6 +111,8 @@
                     android:id="@+id/tietNewPlannerActivityTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:hint="@string/escolha_o_horario" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -146,7 +150,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:itemCount="8"
-            tools:listitem="@layout/item_planner_activity"/>
+            tools:listitem="@layout/item_planner_activity" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
