@@ -13,8 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rpsouza.planner.R
-import com.rpsouza.planner.data.utils.imageBitmapToBase64
-import com.rpsouza.planner.data.utils.imageUriToBitmap
+import com.rpsouza.planner.domain.utils.imageBitmapToBase64
+import com.rpsouza.planner.domain.utils.imageUriToBitmap
 import com.rpsouza.planner.databinding.FragmentSignupBinding
 import kotlinx.coroutines.launch
 

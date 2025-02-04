@@ -1,4 +1,4 @@
-package com.rpsouza.planner.data.utils
+package com.rpsouza.planner.domain.utils
 
 import android.content.Context
 import android.graphics.Bitmap

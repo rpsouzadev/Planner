@@ -1,4 +1,4 @@
-package com.rpsouza.planner.data.di
+package com.rpsouza.planner.core.di
 
 import android.app.Application
 import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSource

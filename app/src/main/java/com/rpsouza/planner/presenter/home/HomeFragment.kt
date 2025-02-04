@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.rpsouza.planner.R
-import com.rpsouza.planner.data.utils.imageBase64ToBitmap
+import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.databinding.FragmentHomeBinding
 import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
 import com.rpsouza.planner.presenter.signup.SignupViewModel
