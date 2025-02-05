@@ -15,6 +15,7 @@ import com.rpsouza.planner.databinding.FragmentHomeBinding
 import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
 import com.rpsouza.planner.presenter.component.PlannerActivityDataPickerDialogFragment
+import com.rpsouza.planner.presenter.component.PlannerActivityTimePickerDialogFragment
 import com.rpsouza.planner.presenter.signup.SignupViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -41,12 +42,25 @@ class HomeFragment : Fragment() {
             tietNewPlannerActivityDate.setOnClickListener {
                 PlannerActivityDataPickerDialogFragment(
                     onConfirm = { year, month, day ->
-                        Toast.makeText(requireContext(), "$year $month, $day", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "$year $month, $day", Toast.LENGTH_SHORT)
+                            .show()
                     },
                     onCancel = {}
                 ).show(
                     childFragmentManager,
                     PlannerActivityDataPickerDialogFragment.TAG
+                )
+            }
+
+            tietNewPlannerActivityTime.setOnClickListener {
+                PlannerActivityTimePickerDialogFragment(
+                    onConfirm = { hour, minute ->
+                        Toast.makeText(requireContext(), "$hour $minute", Toast.LENGTH_SHORT).show()
+                    },
+                    onCancel = {}
+                ).show(
+                    childFragmentManager,
+                    PlannerActivityTimePickerDialogFragment.TAG
                 )
             }
 

@@ -13,8 +13,7 @@ import com.rpsouza.planner.R
 class PlannerActivityDataPickerDialogFragment(
     private val onConfirm: (Int, Int, Int) -> Unit,
     private val onCancel: () -> Unit
-) : DialogFragment(),
-    DatePickerDialog.OnDateSetListener {
+) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar = Calendar.getInstance()
