@@ -1,11 +1,10 @@
-package com.rpsouza.planner.presenter.signup
+package com.rpsouza.planner.presenter.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSource
-import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSource
 import com.rpsouza.planner.core.di.MainServiceLocator
+import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSource
+import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSource
 import com.rpsouza.planner.domain.model.Profile
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay

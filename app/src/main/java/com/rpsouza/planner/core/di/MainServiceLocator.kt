@@ -11,10 +11,14 @@ import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSourceImpl
 import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSourceImpl
 import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSource
 import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSourceImpl
+import kotlinx.coroutines.Dispatchers
 
 object MainServiceLocator {
     private var _application: Application? = null
     private val application: Application get() = _application!!
+
+    val ioDispatcher by lazy { Dispatchers.IO }
+    val mainDispatcher by lazy { Dispatchers.Main }
 
     val userRegistrationLocalDataSource: UserRegistrationLocalDataSource by lazy {
         UserRegistrationLocalDataSourceImpl(applicationContext = application.applicationContext)

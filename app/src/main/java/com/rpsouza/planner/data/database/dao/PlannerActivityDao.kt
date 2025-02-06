@@ -1,6 +1,7 @@
 package com.rpsouza.planner.data.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.rpsouza.planner.data.database.entity.PlannerActivityEntity
@@ -9,6 +10,9 @@ import com.rpsouza.planner.data.database.DatabaseConstants.TABLE_PLANNER_ACTIVIT
 
 @Dao
 interface PlannerActivityDao {
+
+    @Insert
+    fun insert(plannerActivityEntity: PlannerActivityEntity)
 
     @Query("SELECT * FROM $TABLE_PLANNER_ACTIVITY ORDER BY is_completed AND datetime")
     fun getAll(): Flow<List<PlannerActivityEntity>>

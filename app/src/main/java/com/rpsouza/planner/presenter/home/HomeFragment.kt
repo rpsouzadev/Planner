@@ -16,7 +16,7 @@ import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
 import com.rpsouza.planner.presenter.component.PlannerActivityDataPickerDialogFragment
 import com.rpsouza.planner.presenter.component.PlannerActivityTimePickerDialogFragment
-import com.rpsouza.planner.presenter.signup.SignupViewModel
+import com.rpsouza.planner.presenter.viewmodel.SignupViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 

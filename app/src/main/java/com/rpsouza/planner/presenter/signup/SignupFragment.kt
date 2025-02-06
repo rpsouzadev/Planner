@@ -9,13 +9,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rpsouza.planner.R
 import com.rpsouza.planner.domain.utils.imageBitmapToBase64
 import com.rpsouza.planner.domain.utils.imageUriToBitmap
 import com.rpsouza.planner.databinding.FragmentSignupBinding
+import com.rpsouza.planner.presenter.viewmodel.SignupViewModel
 import kotlinx.coroutines.launch
 
 class SignupFragment : Fragment() {
