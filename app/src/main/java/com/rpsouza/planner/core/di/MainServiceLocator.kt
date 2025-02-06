@@ -5,10 +5,12 @@ import androidx.room.Room
 import com.rpsouza.planner.data.database.DatabaseConstants.DATABASE_NAME
 import com.rpsouza.planner.data.database.dao.PlannerActivityDao
 import com.rpsouza.planner.data.database.db.PlannerActivityDatabase
+import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSource
 import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSource
 import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSourceImpl
-import com.rpsouza.planner.data.datasource.auth.AuthenticationLocalDataSource
-import com.rpsouza.planner.data.datasource.auth.AuthenticationLocalDataSourceImpl
+import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSourceImpl
+import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSource
+import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSourceImpl
 
 object MainServiceLocator {
     private var _application: Application? = null
@@ -22,7 +24,7 @@ object MainServiceLocator {
         AuthenticationLocalDataSourceImpl(applicationContext = application.applicationContext)
     }
 
-    val plannerActivityDao: PlannerActivityDao by lazy {
+    private val plannerActivityDao: PlannerActivityDao by lazy {
         val database = Room.databaseBuilder(
             application.applicationContext,
             PlannerActivityDatabase::class.java,
@@ -30,6 +32,10 @@ object MainServiceLocator {
         ).build()
 
         database.plannerActivityDao()
+    }
+
+    val plannerActivityLocalDataSource: PlannerActivityLocalDataSource by lazy {
+        PlannerActivityLocalDataSourceImpl(plannerActivityDao)
     }
 
 

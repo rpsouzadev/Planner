@@ -1,6 +1,6 @@
 package com.rpsouza.planner.data.datasource
 
-import com.rpsouza.planner.data.model.Profile
+import com.rpsouza.planner.domain.model.Profile
 import kotlinx.coroutines.flow.Flow
 
 interface UserRegistrationLocalDataSource {

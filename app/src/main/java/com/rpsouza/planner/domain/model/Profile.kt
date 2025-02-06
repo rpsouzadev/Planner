@@ -1,4 +1,4 @@
-package com.rpsouza.planner.data.model
+package com.rpsouza.planner.domain.model
 
 import kotlinx.serialization.Serializable
 

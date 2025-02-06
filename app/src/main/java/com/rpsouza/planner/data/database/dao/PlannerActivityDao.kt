@@ -14,7 +14,7 @@ interface PlannerActivityDao {
     fun getAll(): Flow<List<PlannerActivityEntity>>
 
     @Query("SELECT * FROM $TABLE_PLANNER_ACTIVITY WHERE uuid = :uuid")
-    fun getByUuid(uuid: String): Flow<PlannerActivityEntity>
+    fun getByUuid(uuid: String): PlannerActivityEntity
 
     @Query("UPDATE $TABLE_PLANNER_ACTIVITY SET is_completed = :isCompleted WHERE uuid = :uuid")
     fun updateIsCompletedByUuid(uuid: String, isCompleted: Boolean)

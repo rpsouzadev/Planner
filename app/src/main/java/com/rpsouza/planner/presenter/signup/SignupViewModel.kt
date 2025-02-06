@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rpsouza.planner.data.datasource.UserRegistrationLocalDataSource
-import com.rpsouza.planner.data.datasource.auth.AuthenticationLocalDataSource
+import com.rpsouza.planner.data.datasource.AuthenticationLocalDataSource
 import com.rpsouza.planner.core.di.MainServiceLocator
-import com.rpsouza.planner.data.model.Profile
+import com.rpsouza.planner.domain.model.Profile
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

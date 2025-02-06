@@ -1,4 +1,4 @@
-package com.rpsouza.planner.data.datasource.auth
+package com.rpsouza.planner.data.datasource
 
 import android.content.Context
 import androidx.datastore.core.DataStore
