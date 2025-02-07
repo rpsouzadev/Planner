@@ -1,7 +1,6 @@
 package com.rpsouza.planner.domain.model
 
 import android.icu.util.Calendar
-import androidx.room.ColumnInfo
 import com.rpsouza.planner.domain.utils.createCalendarFromTimeInMillis
 import com.rpsouza.planner.domain.utils.toPlannerActivityDate
 import com.rpsouza.planner.domain.utils.toPlannerActivityDatetime

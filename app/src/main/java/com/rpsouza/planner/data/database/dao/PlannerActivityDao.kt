@@ -14,7 +14,7 @@ interface PlannerActivityDao {
     @Insert
     fun insert(plannerActivityEntity: PlannerActivityEntity)
 
-    @Query("SELECT * FROM $TABLE_PLANNER_ACTIVITY ORDER BY is_completed AND datetime")
+    @Query("SELECT * FROM $TABLE_PLANNER_ACTIVITY ORDER BY is_completed, datetime DESC")
     fun getAll(): Flow<List<PlannerActivityEntity>>
 
     @Query("SELECT * FROM $TABLE_PLANNER_ACTIVITY WHERE uuid = :uuid")

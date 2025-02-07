@@ -8,12 +8,14 @@ import com.rpsouza.planner.core.di.MainServiceLocator.mainDispatcher
 import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSource
 import com.rpsouza.planner.domain.model.PlannerActivity
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Calendar
 import java.util.UUID
 
 class PlannerActivityViewModel : ViewModel() {
@@ -24,19 +26,32 @@ class PlannerActivityViewModel : ViewModel() {
         MainServiceLocator.plannerActivityLocalDataSource
     }
 
-    init {
+    fun fetchActivities() {
         viewModelScope.launch {
-            plannerActivityLocalDataSource.plannerActivities
-                .flowOn(ioDispatcher)
-                .collect { activities ->
-                    withContext(mainDispatcher) {
-                        _activities.value = activities
+            launch {
+                plannerActivityLocalDataSource.plannerActivities
+                    .flowOn(ioDispatcher)
+                    .collect { activities ->
+                        withContext(mainDispatcher) {
+                            _activities.value = activities
+                        }
                     }
-                }
+            }
+
+            launch {
+                delay(3_000)
+                insert(name = "Jantar", datetime = Calendar.getInstance().timeInMillis)
+                delay(3_000)
+                insert(name = "Estudar inglês", datetime = Calendar.getInstance().timeInMillis)
+                delay(3_000)
+                val calendar = Calendar.getInstance()
+                calendar.add(Calendar.DAY_OF_MONTH, 3)
+                insert(name = "Ir para a praia", datetime = calendar.timeInMillis)
+            }
         }
     }
 
-    fun insertPlannerActivity(name: String, datetime: Long) {
+    fun insert(name: String, datetime: Long) {
         viewModelScope.launch {
             val plannerActivity = PlannerActivity(
                 uuid = UUID.randomUUID().toString(),

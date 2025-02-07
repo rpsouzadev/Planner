@@ -14,8 +14,10 @@ import com.rpsouza.planner.R
 import com.rpsouza.planner.databinding.FragmentHomeBinding
 import com.rpsouza.planner.domain.utils.imageBase64ToBitmap
 import com.rpsouza.planner.presenter.bottom_sheet.UpdatePlannerActivityDialogFragment
+import com.rpsouza.planner.presenter.component.PlannerActivityAdapter
 import com.rpsouza.planner.presenter.component.PlannerActivityDataPickerDialogFragment
 import com.rpsouza.planner.presenter.component.PlannerActivityTimePickerDialogFragment
+import com.rpsouza.planner.presenter.viewmodel.PlannerActivityViewModel
 import com.rpsouza.planner.presenter.viewmodel.SignupViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -25,6 +27,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val signupViewModel: SignupViewModel by activityViewModels()
+    private val plannerActivityViewModel: PlannerActivityViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +42,8 @@ class HomeFragment : Fragment() {
 
         setupObserves()
         with(binding) {
+            plannerActivityViewModel.fetchActivities()
+
             tietNewPlannerActivityDate.setOnClickListener {
                 PlannerActivityDataPickerDialogFragment(
                     onConfirm = { year, month, day ->
@@ -90,6 +95,19 @@ class HomeFragment : Fragment() {
                 }.collect { isTokenValid ->
                     if (!isTokenValid) {
                         showNewTokenSnackBar()
+                    }
+                }
+            }
+
+            launch {
+                plannerActivityViewModel.activities.collect { activities ->
+                    with(binding) {
+                        if (rvPlannerActivity.adapter == null)
+                            rvPlannerActivity.adapter = PlannerActivityAdapter()
+
+                        (rvPlannerActivity.adapter as PlannerActivityAdapter).submitList(
+                            activities
+                        )
                     }
                 }
             }
