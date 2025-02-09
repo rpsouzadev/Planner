@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rpsouza.planner.databinding.FragmentUpadatePlannerActivityDialogBinding
 import com.rpsouza.planner.domain.model.PlannerActivity
+import com.rpsouza.planner.domain.utils.createCalendarFromTimeInMillis
+import com.rpsouza.planner.domain.utils.toPlannerActivityDate
+import com.rpsouza.planner.domain.utils.toPlannerActivityTime
 
 
 class UpdatePlannerActivityDialogFragment(
@@ -27,7 +30,12 @@ class UpdatePlannerActivityDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            // TODO: Add signup logic here
+            val calendarOfSelectActivity =
+                createCalendarFromTimeInMillis(timeInMillis = selectActivity.datetime)
+
+            tietName.setText(selectActivity.name)
+            tietDate.setText(calendarOfSelectActivity.toPlannerActivityDate())
+            tietTime.setText(calendarOfSelectActivity.toPlannerActivityTime())
         }
     }
 
