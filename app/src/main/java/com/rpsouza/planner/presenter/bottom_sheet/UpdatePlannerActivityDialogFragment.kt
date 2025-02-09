@@ -62,6 +62,7 @@ class UpdatePlannerActivityDialogFragment(
 
             tietDate.setOnClickListener {
                 PlannerActivityDataPickerDialogFragment(
+                    initialDate = createCalendarFromTimeInMillis(selectActivity.datetime),
                     onConfirm = { year, month, day ->
                         val filledCalendar = Calendar.getInstance().apply {
                             set(Calendar.YEAR, year)
@@ -87,6 +88,7 @@ class UpdatePlannerActivityDialogFragment(
 
             tietTime.setOnClickListener {
                 PlannerActivityTimePickerDialogFragment(
+                    initialTime = createCalendarFromTimeInMillis(selectActivity.datetime),
                     onConfirm = { hour, minute ->
                         val filledCalendar = Calendar.getInstance().apply {
                             set(Calendar.HOUR_OF_DAY, hour)
