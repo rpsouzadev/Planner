@@ -10,15 +10,20 @@ import com.rpsouza.planner.R
 import com.rpsouza.planner.databinding.ItemPlannerActivityBinding
 import com.rpsouza.planner.domain.model.PlannerActivity
 
-class PlannerActivityAdapter :
-    ListAdapter<PlannerActivity, PlannerActivityAdapter.MyViewHolder>(PlannerActivityDiffCallback) {
+class PlannerActivityAdapter(
+    private val onClickPlannerActivity: (selectActivity: PlannerActivity) -> Unit,
+    private val onChangeIsCompleted: (updateIsCompleted: Boolean, selectActivity: PlannerActivity) -> Unit
+) : ListAdapter<PlannerActivity, PlannerActivityAdapter.MyViewHolder>(PlannerActivityDiffCallback) {
 
     object PlannerActivityDiffCallback : DiffUtil.ItemCallback<PlannerActivity>() {
         override fun areItemsTheSame(oldItem: PlannerActivity, newItem: PlannerActivity): Boolean {
             return oldItem.uuid == newItem.uuid
         }
 
-        override fun areContentsTheSame(oldItem: PlannerActivity, newItem: PlannerActivity): Boolean {
+        override fun areContentsTheSame(
+            oldItem: PlannerActivity,
+            newItem: PlannerActivity
+        ): Boolean {
             return oldItem == newItem
         }
     }
@@ -34,18 +39,30 @@ class PlannerActivityAdapter :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val plannerActivity = getItem(position)
-        holder.bind(plannerActivity)
+        holder.bind(
+            plannerActivity,
+            onClickPlannerActivity = onClickPlannerActivity,
+            onChangeIsCompleted = onChangeIsCompleted
+        )
     }
 
     inner class MyViewHolder(private val binding: ItemPlannerActivityBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(plannerActivity: PlannerActivity) {
+        fun bind(
+            plannerActivity: PlannerActivity,
+            onClickPlannerActivity: (selectActivity: PlannerActivity) -> Unit,
+            onChangeIsCompleted: (updateIsCompleted: Boolean, selectActivity: PlannerActivity) -> Unit
+        ) {
             with(binding) {
+                clPlannerActivityContainer.setOnClickListener {
+                    onClickPlannerActivity(plannerActivity)
+                }
+
                 tvName.text = plannerActivity.name
                 tvDateTime.text = plannerActivity.datetimeString
-                ivStatus.setImageResource(
+                ivIsCompleted.setImageResource(
                     if (plannerActivity.isCompleted) {
-                        ivStatus.setColorFilter(
+                        ivIsCompleted.setColorFilter(
                             ContextCompat.getColor(
                                 binding.root.context,
                                 R.color.lime_300
@@ -53,10 +70,16 @@ class PlannerActivityAdapter :
                         )
                         R.drawable.ic_circle_check
                     } else {
-                        ivStatus.clearColorFilter()
+                        ivIsCompleted.clearColorFilter()
                         R.drawable.ic_circle_dashed
                     }
                 )
+                ivIsCompleted.setOnClickListener {
+                    onChangeIsCompleted(
+                        !plannerActivity.isCompleted,
+                        plannerActivity
+                    )
+                }
             }
         }
     }

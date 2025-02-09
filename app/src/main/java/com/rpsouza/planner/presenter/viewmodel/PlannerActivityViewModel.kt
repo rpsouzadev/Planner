@@ -7,8 +7,6 @@ import com.rpsouza.planner.core.di.MainServiceLocator.ioDispatcher
 import com.rpsouza.planner.core.di.MainServiceLocator.mainDispatcher
 import com.rpsouza.planner.data.datasource.PlannerActivityLocalDataSource
 import com.rpsouza.planner.domain.model.PlannerActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

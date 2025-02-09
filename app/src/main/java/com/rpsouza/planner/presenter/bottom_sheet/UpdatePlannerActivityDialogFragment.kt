@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.rpsouza.planner.databinding.FragmentUpadatePlannerActivityDialogBinding
+import com.rpsouza.planner.domain.model.PlannerActivity
 
 
-class UpdatePlannerActivityDialogFragment : BottomSheetDialogFragment() {
+class UpdatePlannerActivityDialogFragment(
+    private val selectActivity: PlannerActivity,
+) : BottomSheetDialogFragment() {
     private var _binding: FragmentUpadatePlannerActivityDialogBinding? = null
     private val binding get() = _binding!!
 
